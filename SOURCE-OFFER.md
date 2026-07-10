@@ -14,7 +14,7 @@ The unmodified upstream source is available from the LibreOffice project at
 `b19cc5a5d1e0de86ffaa57b6c065bd5776e3d164`).
 
 If for any reason you cannot access the repository above, you may request the
-corresponding source code by contacting **<contact@vnoffice.vn>**. We will
+corresponding source code by contacting **<vnoffice2k6@gmail.com>**. We will
 provide it by a reasonable means at no charge (or for no more than the cost of
 physically performing the distribution).
 
@@ -31,7 +31,7 @@ Mã nguồn gốc (chưa sửa đổi) của LibreOffice có tại
 `b19cc5a5d1e0de86ffaa57b6c065bd5776e3d164`).
 
 Nếu vì lý do nào đó bạn không truy cập được kho mã nguồn trên, bạn có thể yêu cầu
-mã nguồn tương ứng qua email **<contact@vnoffice.vn>**. Chúng tôi sẽ cung cấp
+mã nguồn tương ứng qua email **<vnoffice2k6@gmail.com>**. Chúng tôi sẽ cung cấp
 bằng phương thức hợp lý, miễn phí (hoặc không quá chi phí thực hiện việc sao chép/
 gửi).
 
