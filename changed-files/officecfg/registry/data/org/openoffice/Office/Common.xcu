@@ -477,6 +477,12 @@
         <value>3</value>
       </prop>
     </node>
+    <node oor:name="Document">
+      <!-- VN-Office: không cảnh báo khi lưu định dạng .docx/.xlsx (định dạng mặc định của fleet) -->
+      <prop oor:name="WarnAlienFormat">
+        <value>false</value>
+      </prop>
+    </node>
   </node>
   <node oor:name="Security">
     <node oor:name="Scripting">

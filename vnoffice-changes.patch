@@ -944,7 +944,7 @@ index a12aa97d7..8200d778a 100644
              PRODUCTEXTENSION .@LIBO_VERSION_MICRO@.@LIBO_VERSION_PATCH@@LIBO_VERSION_SUFFIX@
              WINDOWSBASISROOTNAME LibreOfficeDev @LIBO_VERSION_MAJOR@
 diff --git a/officecfg/registry/data/org/openoffice/Office/Common.xcu b/officecfg/registry/data/org/openoffice/Office/Common.xcu
-index 22224887c..10dcb8455 100644
+index 22224887c..499a05c08 100644
 --- a/officecfg/registry/data/org/openoffice/Office/Common.xcu
 +++ b/officecfg/registry/data/org/openoffice/Office/Common.xcu
 @@ -49,6 +49,11 @@
@@ -968,6 +968,19 @@ index 22224887c..10dcb8455 100644
      </prop>
      <prop oor:name="CreditsURL" oor:type="xs:string">
        <value>https://hub.libreoffice.org/credits/</value>
+@@ -472,6 +477,12 @@
+         <value>3</value>
+       </prop>
+     </node>
++    <node oor:name="Document">
++      <!-- VN-Office: không cảnh báo khi lưu định dạng .docx/.xlsx (định dạng mặc định của fleet) -->
++      <prop oor:name="WarnAlienFormat">
++        <value>false</value>
++      </prop>
++    </node>
+   </node>
+   <node oor:name="Security">
+     <node oor:name="Scripting">
 diff --git a/officecfg/registry/data/org/openoffice/Office/UI/GenericCommands.xcu b/officecfg/registry/data/org/openoffice/Office/UI/GenericCommands.xcu
 index 87e415cbb..2448a3d2c 100644
 --- a/officecfg/registry/data/org/openoffice/Office/UI/GenericCommands.xcu
@@ -1031,10 +1044,30 @@ index f7b65b912..afdfd04df 100644
        <node oor:name="Modes">
          <node oor:name="Default" oor:op="replace">
 diff --git a/officecfg/registry/data/org/openoffice/Setup.xcu b/officecfg/registry/data/org/openoffice/Setup.xcu
-index 9b282bcf2..6622cb8e2 100644
+index 9b282bcf2..69d0623bf 100644
 --- a/officecfg/registry/data/org/openoffice/Setup.xcu
 +++ b/officecfg/registry/data/org/openoffice/Setup.xcu
-@@ -1087,4 +1087,13 @@
+@@ -54,7 +54,8 @@
+           <value>calc8_template</value>
+         </prop>
+         <prop oor:name="ooSetupFactoryDefaultFilter">
+-          <value>calc8</value>
++          <!-- VN-Office: mặc định lưu Calc dưới định dạng Excel .xlsx -->
++          <value>Calc MS Excel 2007 XML</value>
+         </prop>
+         <prop oor:name="ooSetupFactoryEmptyDocumentURL" oor:finalized="true">
+           <value>private:factory/scalc</value>
+@@ -272,7 +273,8 @@
+           <value>writer8_template</value>
+         </prop>
+         <prop oor:name="ooSetupFactoryDefaultFilter">
+-          <value>writer8</value>
++          <!-- VN-Office: mặc định lưu Writer dưới định dạng Word .docx -->
++          <value>MS Word 2007 XML</value>
+         </prop>
+         <prop oor:name="ooSetupFactoryEmptyDocumentURL" oor:finalized="true">
+           <value>private:factory/swriter</value>
+@@ -1087,4 +1089,13 @@
        </node>
      </node>
    </node>
