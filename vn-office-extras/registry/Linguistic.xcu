@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ VN-Office: đặt ngôn ngữ giao diện mặc định là Tiếng Việt.
+ langselect.cxx đọc Office.Linguistic/General/UILocale trước tiên; nếu rỗng nó
+ rơi về locale hệ điều hành (thường là tiếng Anh). Đặt vi-VN để mặc định là
+ Tiếng Việt trên máy cài mới. Người dùng có thể đổi qua menu "Ngôn ngữ".
+-->
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oor:name="Linguistic" oor:package="org.openoffice.Office">
+  <node oor:name="General">
+    <prop oor:name="UILocale">
+      <value>vi-VN</value>
+    </prop>
+  </node>
+</oor:component-data>

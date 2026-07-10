@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="LangSwitch" script:language="StarBasic" script:moduleType="normal">REM  VN-Office — Chuyen doi ngon ngu giao dien (UI language switch)
+REM  Doi &quot;ooLocale&quot; roi de nghi khoi dong lai de ap dung.
+
+Sub SetVietnamese
+	VNSwitchLang(&quot;vi-VN&quot;)
+End Sub
+
+Sub SetEnglish
+	VNSwitchLang(&quot;en-US&quot;)
+End Sub
+
+Sub VNSwitchLang(sLang As String)
+	Dim oProvider As Object, oAccess As Object
+	Dim oArgs(0) As New com.sun.star.beans.PropertyValue
+	On Error GoTo Failed
+	oProvider = createUnoService(&quot;com.sun.star.configuration.ConfigurationProvider&quot;)
+	REM langselect.cxx doc UILocale truoc tien -> day moi la input quyet dinh ngon ngu giao dien
+	oArgs(0).Name = &quot;nodepath&quot;
+	oArgs(0).Value = &quot;org.openoffice.Office.Linguistic/General&quot;
+	oAccess = oProvider.createInstanceWithArguments( _
+		&quot;com.sun.star.configuration.ConfigurationUpdateAccess&quot;, oArgs())
+	oAccess.setPropertyValue(&quot;UILocale&quot;, sLang)
+	oAccess.commitChanges()
+
+	Dim sMsg As String
+	If sLang = &quot;vi-VN&quot; Then
+		sMsg = &quot;Da chuyen giao dien sang Tieng Viet.&quot; &amp; Chr(10) &amp; Chr(10) &amp; _
+			&quot;Khoi dong lai VN-Office ngay bay gio de ap dung?&quot;
+	Else
+		sMsg = &quot;User interface set to English (US).&quot; &amp; Chr(10) &amp; Chr(10) &amp; _
+			&quot;Restart VN-Office now to apply?&quot;
+	End If
+
+	If MsgBox(sMsg, 4 + 32, &quot;VN-Office&quot;) = 6 Then
+		VNDoRestart()
+	End If
+	Exit Sub
+Failed:
+	MsgBox &quot;Khong the doi ngon ngu / Cannot change language:&quot; &amp; Chr(10) &amp; Error$, 16, &quot;VN-Office&quot;
+End Sub
+
+Sub VNDoRestart()
+	On Error GoTo Manual
+	Dim oRestart As Object
+	oRestart = GetDefaultContext().getValueByName( _
+		&quot;/singletons/com.sun.star.task.theOfficeRestartManager&quot;)
+	oRestart.requestRestart(Nothing)
+	Exit Sub
+Manual:
+	MsgBox &quot;Vui long dong va mo lai VN-Office de ap dung ngon ngu moi.&quot; &amp; Chr(10) &amp; _
+		&quot;Please close and reopen VN-Office to apply the new language.&quot;, 64, &quot;VN-Office&quot;
+End Sub
+</script:module>

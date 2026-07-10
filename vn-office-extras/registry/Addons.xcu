@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ VN-Office: thêm menu "Ngôn ngữ / Language" để chuyển giao diện tiếng Việt / tiếng Anh.
+ Gọi macro Basic trong thư viện ứng dụng VNLang.LangSwitch.
+-->
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oor:name="Addons" oor:package="org.openoffice.Office">
+  <node oor:name="AddonUI">
+    <node oor:name="OfficeMenuBar">
+      <node oor:name="vn.office.langmenu" oor:op="replace">
+        <prop oor:name="Title" oor:type="xs:string">
+          <value xml:lang="en-US">Language</value>
+          <value xml:lang="vi">Ngôn ngữ</value>
+        </prop>
+        <prop oor:name="Target" oor:type="xs:string">
+          <value>_self</value>
+        </prop>
+        <node oor:name="Submenu">
+          <node oor:name="vn.office.lang.vi" oor:op="replace">
+            <prop oor:name="URL" oor:type="xs:string">
+              <value>vnd.sun.star.script:VNLang.LangSwitch.SetVietnamese?language=Basic&amp;location=application</value>
+            </prop>
+            <prop oor:name="Title" oor:type="xs:string">
+              <value xml:lang="en-US">Tiếng Việt</value>
+              <value xml:lang="vi">Tiếng Việt</value>
+            </prop>
+            <prop oor:name="Target" oor:type="xs:string">
+              <value>_self</value>
+            </prop>
+          </node>
+          <node oor:name="vn.office.lang.en" oor:op="replace">
+            <prop oor:name="URL" oor:type="xs:string">
+              <value>vnd.sun.star.script:VNLang.LangSwitch.SetEnglish?language=Basic&amp;location=application</value>
+            </prop>
+            <prop oor:name="Title" oor:type="xs:string">
+              <value xml:lang="en-US">English (US)</value>
+              <value xml:lang="vi">English (US)</value>
+            </prop>
+            <prop oor:name="Target" oor:type="xs:string">
+              <value>_self</value>
+            </prop>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+</oor:component-data>
