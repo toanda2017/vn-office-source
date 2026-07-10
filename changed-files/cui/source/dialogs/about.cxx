@@ -88,7 +88,11 @@ AboutDialog::AboutDialog(weld::Window* pParent)
     if (IsStringValidGitHash(sbuildId))
     {
         const tools::Long nMaxChar = 25;
-        m_pBuildLabel->set_uri("https://git.libreoffice.org/core/commit/" + sbuildId);
+        // Point the build link at the VN-Office source repository (published for
+        // MPL 2.0 / LGPL v3+ source-disclosure compliance) rather than upstream
+        // LibreOffice, so it stays valid once local changes are committed and
+        // guides users to the corresponding source.
+        m_pBuildLabel->set_uri(u"https://github.com/toanda2017/vn-office-source"_ustr);
         m_pBuildLabel->set_label(
             sbuildId.getLength() > nMaxChar
                 ? sbuildId.replaceAt(nMaxChar, sbuildId.getLength() - nMaxChar, u"...")
